@@ -7,8 +7,7 @@ function App() {
   let [tema, setTema] = useState("dark");
   
   function gantiTema(){
-    if(tema == "dark") setTema("light");
-    else setTema("dark");
+    setTema(tema == "dark" ? "light" : "dark");
   }
 
   function updateInput(event){
@@ -28,28 +27,33 @@ function App() {
   }
   return (
     <>
-    <main className={tema == "dark" ? "bg-black text-white" : "bg-white text-black"}>
-      <button onClick={gantiTema}>Ganti Tema</button>
+    <main className={`${tema == "dark" ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-900"} min-h-screen transition-all duration-500`}>
+      <button onClick={gantiTema}
+              className='rounded-full font-medium transition-all duration-300'>
+              Ganti Tema</button>
+      <section className='flex flex-col gap-3 p-4 items-center'>
       <header className=''>Daftar Kegiatan : </header>
-        //input
-      <section>
           <input 
-        placeholder='Masukan Kegiatan Kamu :D'
+        placeholder='Masukan Kegiatan Kamu....'
         type="text"
         value = {input}
         onChange={updateInput}
-        className=''/>
-        <button className='' onClick={isiInput}>
+        className='px-2 py-2 rounded-lg border border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400'/>
+        <button className='mx-1 py-2 px-4 bg-purple-800 text-white rounded-lg hover:bg-purple-500 transition-all duration-500'
+                onClick={isiInput}>
           Tambah
         </button>
-      </section>
-      <ul>
+      <ul className='w-72'>
         {kegiatan.map((item,index) =>(
-        <li key={index}>{item}<button onClick={() => hapusKegiatan(index)}>
-          Hapus</button> 
+        <li key={index}
+            className='flex justify-between items-center mt-4 p-3 rounded-lg shadow-sm border'
+            >{item}<button onClick={() => hapusKegiatan(index)}
+            className="text-red-500 hover:text-red-700 font-medium">
+            Hapus</button> 
         </li>
           ))}
       </ul>
+      </section>
     </main>
     </>
   )
