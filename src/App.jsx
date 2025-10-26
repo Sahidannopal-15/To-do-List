@@ -63,7 +63,7 @@ function App() {
           whileHover={{ scale: 1.25 }}
           whileTap={{ scale: 0.95 }}
           transition={{ duration: 0.1 }}
-          className={`${tema == "dark" ? "hover:bg-gray-800" :  "hover:bg-gray-300"} px-2 py-2 rounded-lg border border-gray-400  focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all duration-500`}
+          className={`${tema == "dark" ? "hover:bg-gray-800" :  "hover:bg-gray-300"} px-2 py-2 rounded-lg border border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all duration-500 sm:hover:scale-125`}
           />
       </AnimatePresence>
         <input type="date"
@@ -86,7 +86,7 @@ function App() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         transition={{ duration: 0.5 }}
-     className='font-bold md:text-2xl text-base'> 
+     className='font-bold md:text-2xl text-sm'> 
      BELOM ADA KEGIATANN NIH😤💢, YOKK PRODUKTIF‼️
      </motion.p>
     ): (
