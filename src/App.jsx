@@ -66,17 +66,25 @@ function App() {
           className={`${tema == "dark" ? "hover:bg-gray-800" :  "hover:bg-gray-300"} px-2 py-2 rounded-lg border border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all duration-500 sm:hover:scale-125`}
           />
       </AnimatePresence>
-        <input type="date"
+      <label htmlFor="tanggal" className="block sm:hidden text-sm font-medium">
+          Tanggal
+        </label>
+        <input id='tanggal'
+                type="date"
                 value={tanggal}
                 onChange={(e) => setTanggal(e.target.value)}
                 className={`${tema == "dark" ? "bg-gray-300 hover:bg-gray-400 text-black" : "text-gray-200 bg-red-600 hover:bg-red-400"} p-2 rounded-lg transition-all duration-500 hover:scale-115`}
                 />
-        <input type="time"
+        <label htmlFor="jam" className="block sm:hidden text-sm font-medium">
+          Jam
+        </label>
+        <input id='jam'
+                type="time"
                 value={waktu}
                 onChange={(e) => setWaktu(e.target.value)}
                 className={`${tema == "dark" ? "bg-gray-300 hover:bg-gray-400 text-black" : "text-gray-200 bg-red-600 hover:bg-red-400"} p-1 rounded-lg transition-all duration-500 hover:scale-115`}
                 />
-          <button className={`${tema == "dark" ? "bg-purple-800 hover:bg-purple-400 text-gray-200" : "text-gray-200 bg-purple-800 hover:bg-purple-400"} p-2 rounded-lg mx-1 py-2 px-4 transition-all duration-500 hover:scale-115`}
+          <button className={`${tema == "dark" ? "bg-purple-800 hover:bg-purple-400 text-gray-200" : "text-gray-200 bg-purple-800 hover:bg-purple-400"} p-2 rounded-lg mx-1 py-2 px-4 transition-all duration-500 sm:hover:scale-125`}
                     onClick={isiInput}>
               Tambah
           </button>
@@ -86,7 +94,7 @@ function App() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         transition={{ duration: 0.5 }}
-     className='font-bold md:text-2xl text-sm'> 
+        className='font-bold md:text-2xl text-sm'> 
      BELOM ADA KEGIATANN NIH😤💢, YOKK PRODUKTIF‼️
      </motion.p>
     ): (
