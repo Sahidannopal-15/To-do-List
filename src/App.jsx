@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import { motion, AnimatePresence } from "framer-motion"
 
 function App() {
   let [kegiatan, setKegiatan] = useState([]);
@@ -11,10 +11,9 @@ function App() {
   function gantiTema(){
     setTema(tema == "dark" ? "light" : "dark");
   }
-
   function updateInput(event){
     let value = event.target.value
-    setInput(value)
+    setInput(value);
   }
   function isiInput(){
     if(input == ""){
@@ -23,12 +22,12 @@ function App() {
       alert ("Isi Tanggal dulu, Pak!")
     }else{
       let kegiatanBaru = {
-        Nama: input,
-        Waktu: waktu
+        input, waktu, tanggal
       };
       setKegiatan([...kegiatan,kegiatanBaru]);
       setInput("");
       setWaktu("");
+      setTanggal("");
     }
   }
   function hapusKegiatan(index){
@@ -36,34 +35,60 @@ function App() {
   }
   return (
     <>
-    <main className={`${tema == "dark" ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-900"} min-h-screen transition-all duration-500`}>
+    <main className={`${tema == "dark" ? "bg-gray-900 text-white" : "bg-orange-100 text-gray-900"} min-h-screen transition-all duration-500`}>
       <button onClick={gantiTema}
               className='rounded-full font-medium transition-all duration-300'>
               Ganti Tema</button>
-      <section className='flex flex-col gap-3 p-4 items-center'>
-      <header className=''>Daftar Kegiatan : </header>
-        <input 
-          placeholder='Masukan Kegiatan Kamu....'
+      <section className='flex flex-col p-4 items-center gap-5'>
+      <header className='font-bold text-2xl'>Daftar Kegiatan</header>
+      <AnimatePresence>
+        <motion.input 
+          placeholder=' Ketik Sesuatu, Pak....'
           type="text"
           value = {input}
           onChange={updateInput}
-          className='px-2 py-2 rounded-lg border border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400'/>
-        <input type="date" />
-        <input type="time" />
-          <button className='mx-1 py-2 px-4 bg-purple-800 text-white rounded-lg hover:bg-purple-500 transition-all duration-500'
+          initial={{ opacity: 0, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 0 }}
+          whileHover={{ scale: 1.25 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ duration: 0.1 }}
+          className={`${tema == "dark" ? "hover:bg-gray-800" :  "hover:bg-gray-300"} px-2 py-2 rounded-lg border border-gray-400  focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all duration-500`}
+          />
+      </AnimatePresence>
+        <input type="date"
+                value={tanggal}
+                onChange={(e) => setTanggal(e.target.value)}
+                className={`${tema == "dark" ? "bg-gray-300 hover:bg-gray-400 text-black" : "text-gray-200 bg-red-600 hover:bg-red-400"} p-2 rounded-lg transition-all duration-500`}
+        />
+        <input type="time"
+                value={waktu}
+                onChange={(e) => setWaktu(e.target.value)}
+                className={`${tema == "dark" ? "bg-gray-300 hover:bg-gray-400 text-black" : "text-gray-200 bg-red-600 hover:bg-red-400"} p-1 rounded-lg transition-all duration-500`}
+        />
+          <button className={`${tema == "dark" ? "bg-purple-800 hover:bg-purple-400 text-gray-200" : "text-gray-200 bg-red-800 hover:bg-red-400"} p-2 rounded-lg mx-1 py-2 px-4 transition-all duration-500`}
                     onClick={isiInput}>
               Tambah
           </button>
-      <ul className='w-72'>
+    <AnimatePresence>
+      <ul className='w-80'>
         {kegiatan.map((item,index) =>(
-        <li key={index}
-            className='flex justify-between items-center mt-4 p-3 rounded-lg shadow-sm border'
-            >{item}<button onClick={() => hapusKegiatan(index)}
-            className="text-red-500 hover:text-red-700 font-medium">
-            Hapus</button> 
-        </li>
+        <motion.li key={index}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 10 }}
+          whileHover={{ scale: 1.25 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ duration: 0.5 }}
+          className='font-mono flex justify-between items-center mt-4 p-3 rounded-lg shadow-sm border'
+          >{item.input} - {item.waktu} - {item.tanggal}
+        <button onClick={() => hapusKegiatan(index)}
+                className="text-red-500 hover:text-red-700 font-medium">
+        Hapus</button> 
+        </motion.li>
           ))}
       </ul>
+    </AnimatePresence>
       </section>
     </main>
     </>
