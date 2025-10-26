@@ -49,7 +49,7 @@ function App() {
               <Moon className='text-blue-500' />
             )}
       </button>
-      <section className='flex flex-col p-4 items-center gap-5'>
+      <section className='flex flex-col p-4 items-center gap-4'>
       <header className='font-bold text-xl md:text-2xl tracking-wide'>Daftar Kegiatan</header>
       <AnimatePresence>
         <motion.input 
@@ -57,17 +57,14 @@ function App() {
           type="text"
           value = {input}
           onChange={updateInput}
-          initial={{ opacity: 0, y: 0 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 0 }}
           whileHover={{ scale: 1.25 }}
           whileTap={{ scale: 0.95 }}
           transition={{ duration: 0.1 }}
-          className={`${tema == "dark" ? "hover:bg-gray-800" :  "hover:bg-gray-300"} px-2 py-2 rounded-lg border border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all duration-500 sm:hover:scale-125`}
+          className={`${tema == "dark" ? "hover:bg-gray-800" :  "hover:bg-gray-300"} px-2 py-2 rounded-lg border border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all duration-500`}
           />
       </AnimatePresence>
-      <label htmlFor="tanggal" className="block sm:hidden text-sm font-medium">
-          Tanggal
+      <label htmlFor="tanggal" className="block sm:hidden text-sm font-mono pt-2">
+          Isi Tanggal
         </label>
         <input id='tanggal'
                 type="date"
@@ -75,8 +72,8 @@ function App() {
                 onChange={(e) => setTanggal(e.target.value)}
                 className={`${tema == "dark" ? "bg-gray-300 hover:bg-gray-400 text-black" : "text-gray-200 bg-red-600 hover:bg-red-400"} p-2 rounded-lg transition-all duration-500 hover:scale-115`}
                 />
-        <label htmlFor="jam" className="block sm:hidden text-sm font-medium">
-          Jam
+        <label htmlFor="jam" className="pt-4 block sm:hidden text-sm font-mono">
+          Isi Jam
         </label>
         <input id='jam'
                 type="time"
@@ -84,18 +81,18 @@ function App() {
                 onChange={(e) => setWaktu(e.target.value)}
                 className={`${tema == "dark" ? "bg-gray-300 hover:bg-gray-400 text-black" : "text-gray-200 bg-red-600 hover:bg-red-400"} p-1 rounded-lg transition-all duration-500 hover:scale-115`}
                 />
-          <button className={`${tema == "dark" ? "bg-purple-800 hover:bg-purple-400 text-gray-200" : "text-gray-200 bg-purple-800 hover:bg-purple-400"} p-2 rounded-lg mx-1 py-2 px-4 transition-all duration-500 sm:hover:scale-125`}
+          <button className={`${tema == "dark" ? "bg-purple-800 hover:bg-purple-400 text-gray-200" : "text-gray-200 bg-purple-800 hover:bg-purple-400"} p-2 rounded-lg mx-1 py-2 px-4 transition-all duration-500 hover:scale-115`}
                     onClick={isiInput}>
               Tambah
           </button>
     {kegiatan.length === 0 ? (
      <motion.p 
-        animate={{ opacity: 1, y: 0 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         transition={{ duration: 0.5 }}
-        className='font-bold md:text-2xl text-sm'> 
-     BELOM ADA KEGIATANN NIH😤💢, YOKK PRODUKTIF‼️
+        className='font-bold md:text-2xl sm:text-lg text-center'> 
+     BELOM ADA KEGIATANN NIH😤💢 <br />
+     YOKK PRODUKTIF‼️
      </motion.p>
     ): (
     <AnimatePresence>
@@ -108,16 +105,19 @@ function App() {
         whileHover={{ scale: 1.25 }}
         whileTap={{ scale: 0.95 }}
         transition={{ duration: 0.5 }}
-        className='font-mono flex justify-between items-center mt-4 p-3 rounded-lg shadow-sm border'
+        className='font-mono sm:text-sm flex justify-between items-center mt-4 p-3 rounded-lg shadow-sm border'
         >{item.input} - {item.waktu} - {item.tanggal}
         <button onClick={() => hapusKegiatan(index)}
-                className="text-red-500 hover:text-red-700 font-medium">
+                className="text-red-400 hover:text-red-700 font-medium pl-5">
         Hapus</button> 
         </motion.li>
           ))}
       </ul>
     </AnimatePresence>
     )}
+    <footer className='mt-24 md:mt-28 py-3 border-t border-white/10 text-sm italic hover:text-red-500 transition-colors duration-300 tracking-widest'>
+            💻 dibuat oleh sahidannopal15
+    </footer>
       </section>
     </main>
     </>
