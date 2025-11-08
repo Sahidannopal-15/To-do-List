@@ -1,16 +1,28 @@
-# React + Vite
+<h3>📋To-do List app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h5>aplikasi berbasis React + Tailwind CSS yang mensimulasikan user untuk mencatat kegiatan yg akan dikerjakan.
 
-Currently, two official plugins are available:
+<hr>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<h4>⚙️ Fitur : 
+<h5>💻📱Tampilan responsive - bisa digunakan di laptop maupun handphone.
+<h5>😎Mengubah Tema -  user bisa mengubah tema seperti gelap ke terang dan sebaliknya.
+<h5>⌛Menerima input - user bisa memasukan kegiatan yg akan dilakukan.
+<h5>🕰️menyesuaikan waktu ketika menginput - user bisa mnegatur waktu kegiatan.
+<h5>📋Mendapat output - user akan menerima output berupa ringkasan kegiatan dan waktu.
 
-## React Compiler
+<hr>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+<h4> 🧩 Teknologi yang Digunakan :
+<h5>⚛️ React.js — untuk membangun antarmuka pengguna
+<h5>💨 Tailwind CSS — untuk styling cepat dan responsif
 
-## Expanding the ESLint configuration
+<hr>
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🎬 Tampilan : 
+![Preview](./readme-image/Tampilan-gelap.png)
+![Preview](./readme-image/Tampilan-Terang.png)
+
+<hr>
+
+<h3> Terimakasih sudah membaca 😁
